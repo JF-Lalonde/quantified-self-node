@@ -28,7 +28,7 @@ if(!module.parent){
 app.get('/api/v1/foods/:id', FoodsController.showFood)
 app.get('/api/v1/foods', FoodsController.indexFood)
 app.post('/api/v1/foods', FoodsController.createFood)
-// app.patch('/api/v1/foods/:id', FoodsController.editFood)
+app.patch('/api/v1/foods/:id', FoodsController.editFood)
 // app.delete('/api/v1/foods/:id', FoodsController.deleteFood)
 
 module.exports = app
