@@ -2,8 +2,8 @@
 exports.up = function(knex, Promise) {
   let createQuery = (`CREATE TABLE meals(
     id SERIAL PRIMARY KEY NOT NULL,
-    name TEXT,
-    food varchar(80) REFERENCES foods(ID)
+    name TEXT
+
   )`)
   return knex.raw(createQuery)
 };
