@@ -1,5 +1,6 @@
-var express = require('express')
-var app = express()
+let FoodsController = require('../lib/controllers/FoodsController')
+let express = require('express')
+let app = express()
 
 app.set('port', process.env.PORT || 1234)
 app.locals.title = 'Quantified Self'
@@ -8,7 +9,7 @@ app.get('/', function(request, response) {
   response.send('Quantified Self Enpoints')
 })
 
-app.get('/api/foods/:id', function(request, response){
+app.get('/api/foods/:id', FoodsController.postFood){
   response.json({
     id: request.params.id
   })
