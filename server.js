@@ -14,11 +14,11 @@ app.locals.title = 'Quantified Self'
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Methods", "POST, PATCH, GET, DELETE, OPTIONS")
+  res.header("Access-Control-Allow-Methods", "POST, PUT, GET, DELETE, OPTIONS")
   next();
 });
 
-app.use(bodyParser.json({ type: 'application/json' }))
+app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/', function(request, response) {
@@ -37,6 +37,6 @@ app.get('/api/v1/foods', FoodsController.indexFood)
 app.post('/api/v1/foods', FoodsController.createFood)
 
 app.put('/api/v1/foods/:id', FoodsController.editFood)
-// app.delete('/api/v1/foods/:id', FoodsController.deleteFood)
+app.delete('/api/v1/foods/:id', FoodsController.deleteFood)
 
 module.exports = app
