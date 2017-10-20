@@ -1,4 +1,4 @@
-let FoodsController = require('../lib/controllers/FoodsController')
+let mealsController = require('./lib/controllers/mealsController')
 let express = require('express')
 let app = express()
 
@@ -9,11 +9,6 @@ app.get('/', function(request, response) {
   response.send('Quantified Self Enpoints')
 })
 
-app.get('/api/foods/:id', FoodsController.postFood){
-  response.json({
-    id: request.params.id
-  })
-})
 
 if(!module.parent){
   app.listen(app.get('port'), function() {
@@ -21,5 +16,8 @@ if(!module.parent){
   })
 }
 
+app.get('/api/v1/meals', mealsController.getMeals)
+app.get('/api/v1/meals/:id/foods', mealsController.getMeal)
+app.delete('/api/v1/meals/:meal_id/foods/:id', mealsController.deleteFood)
 
 module.exports = app
