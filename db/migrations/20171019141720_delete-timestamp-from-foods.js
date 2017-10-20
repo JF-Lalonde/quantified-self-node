@@ -1,13 +1,9 @@
-
 exports.up = function(knex, Promise) {
-  let createQuery = (`CREATE TABLE meals(
-    id SERIAL PRIMARY KEY NOT NULL,
-    name TEXT
-  )`)
+ let createQuery = (`ALTER TABLE foods DROP COLUMN created_at`)
   return knex.raw(createQuery)
 };
 
 exports.down = function(knex, Promise) {
-  let dropQuery = (`DROP TABLE meals`)
+  let dropQuery = (`DROP TABLE foods`)
   return knex.raw(dropQuery)
 };
