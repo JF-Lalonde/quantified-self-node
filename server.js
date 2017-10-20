@@ -11,7 +11,7 @@ const database      = require('knex')(configuration);
 app.set('port', process.env.PORT || 1234)
 app.locals.title = 'Quantified Self'
 
-app.use(bodyParser.json())
+app.use(bodyParser.json({ type: 'application/json' }))
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/', function(request, response) {
@@ -28,7 +28,8 @@ if(!module.parent){
 app.get('/api/v1/foods/:id', FoodsController.showFood)
 app.get('/api/v1/foods', FoodsController.indexFood)
 app.post('/api/v1/foods', FoodsController.createFood)
-app.patch('/api/v1/foods/:id', FoodsController.editFood)
+
+app.put('/api/v1/foods/:id', FoodsController.editFood)
 // app.delete('/api/v1/foods/:id', FoodsController.deleteFood)
 
 module.exports = app
